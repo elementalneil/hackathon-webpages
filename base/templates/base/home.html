@@ -2,4 +2,12 @@
 
 {% block content %}
 <h1>Home Template</h1>
+
+<hr>
+<div>
+    {% for p in participants %}
+        <div><h5>#{{p.id}}: {{p.name}}</h5></div>
+    {% endfor %}
+</div>
+
 {% endblock %}
