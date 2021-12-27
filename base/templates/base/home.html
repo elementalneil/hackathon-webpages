@@ -3,8 +3,33 @@
 {% block content %}
 <h1>Home Template</h1>
 <hr>
+
 <h3>Countdown Timer</h3>
-<div><h5>Days: {{time.days}}, Hours: {{time.hours}}, Minutes: {{time.minutes}}, Seconds: {{time.seconds}}</h5></div>
+    <script>
+        function updateTimer(){
+            let event_time = 1641389400000;
+            let current_time = new Date();
+
+            let diff=event_time-current_time;
+
+            diff=Math.floor(diff/1000);
+
+            let days=Math.floor(diff/86400);
+            diff=diff%86400;
+            let hours=Math.floor(diff/3600);
+            diff=diff%3600;
+            let mins=Math.floor(diff/60);
+            let seconds=diff%60;
+
+            document.getElementById("timer").innerHTML=
+                '<div>Days: '+days+'</div>'+ 
+                '<div>Hours: '+hours+'</div>'+ 
+                '<div>Minutes: '+mins+'</div>'+ 
+                '<div>Seconds: '+seconds+'</div>';
+        }
+        setInterval('updateTimer()', 1000);
+    </script>
+    <div id="timer"></div>
 <hr>
 <div>
     {% for p in participants %}
