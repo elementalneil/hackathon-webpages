@@ -1,61 +1,74 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <h1>Registration Form</h1>
-    <div>
-        <script type="text/javascript">
-            function validateForm(){
-                let x = document.forms["form"]["dob"].value;
-                let bdate = new Date(x);
-                bdate=bdate.getTime();
-                let cdate = new Date();
-                cdate=cdate.getTime();
-                let age=cdate-bdate;
-                if(age<568036800000 || age>662671800000){
-                    alert("Age should be between 18 and 21");
-                    return false;
+    <div id="form-container">
+        <h1 id="form-header">Registration Form</h1>
+        <div id="form-elements">
+            <script type="text/javascript">
+                function validateForm(){
+                    let x = document.forms["form"]["dob"].value;
+                    let bdate = new Date(x);
+                    bdate=bdate.getTime();
+                    let cdate = new Date();
+                    cdate=cdate.getTime();
+                    let age=cdate-bdate;
+                    if(age<568036800000 || age>662671800000){
+                        alert("Age should be between 18 and 21");
+                        return false;
+                    }
+                    // let x = document.forms["myForm"]["dob"].value;
+
+                    let r=document.forms["form"]["roll"].value;
+                    if(!(/[B|M|P|b|m|p]{1}[0-9]{6}[a-zA-Z]{2}/.test(r))){
+                        alert("Incorrect Registration Number");
+                        return false;
+                    }
+
+                    let n=document.forms["form"]["mobile"].value;
+                    if(!((/[0-9]{10}/).test(n))){
+                        alert("Incorrect Phone Number");
+                        return false;
+                    }
+
+                    alert("Successfully Registered. Welcome onboard!");
                 }
-                // let x = document.forms["myForm"]["dob"].value;
-
-                let r=document.forms["form"]["roll"].value;
-                if(!(/[B|M|P|b|m|p]{1}[0-9]{6}[a-zA-Z]{2}/.test(r))){
-                    alert("Incorrect Registration Number");
-                    return false;
-                }
-
-                let n=document.forms["form"]["mobile"].value;
-                if(!((/[0-9]{10}/).test(n))){
-                    alert("Incorrect Phone Number");
-                    return false;
-                }
-
-                alert("Successfully Registered. Welcome onboard!");
-            }
-        </script>
-        <form method="POST" action="" name="form" onsubmit="return validateForm()">
-            {% csrf_token %}
-
-            <label>Name: </label> <input name="name" type="text" id="name" required="true"><br>
-            <label>Date of Birth: </label> <input name="dob" type="date" id="dob" required="true"><br>
-            <label>Roll Number: </label> <input name="roll" type="text" id="roll" required="true" minlength="9" maxlength="9" ><br>
-            <label>Branch: </label> 
-            <select name="branch" id="branch">
-                <option value="MCA">MCA</option>
-                <option value="BTech">BTech</option>
-                <option value="MTech">MTech</option>
-                <option value="PHD">PHD</option>
-            </select>
-            <br>
-            <label>Mobile Number: </label> <input name="mobile" type="text" id="mobile" required="true" minlength="10" maxlength="10" ><br>
-            <label>E-Mail: </label> <input name="email" type="email" id="email" required="true"><br>
-            <label>Sex: </label>
-            <select name="sex" id="sex">
-                <option value="F">Female</option>
-                <option value="M">Male</option>
-                <option value="N">Rather not Specify</option>
-            </select>
-            <br>
-            <input type="submit" value="Submit">
-        </form>
+            </script>
+            <form method="POST" action="" name="form" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <div id="form-inputs">
+                    <label>Name: </label> <input name="name" type="text" id="name" required="true">
+                </div>
+                <div id="form-inputs">
+                    <label>Date of Birth: </label> <input name="dob" type="date" id="dob" required="true">
+                </div>
+                <div id="form-inputs">
+                    <label>Roll Number: </label> <input name="roll" type="text" id="roll" required="true" minlength="9" maxlength="9" >
+                </div>
+                <div id="form-inputs">
+                    <label>Branch: </label> 
+                    <select name="branch" id="branch">
+                        <option value="MCA">MCA</option>
+                        <option value="BTech">BTech</option>
+                        <option value="MTech">MTech</option>
+                        <option value="PHD">PHD</option>
+                    </select>
+                </div>
+                <div id="form-inputs">
+                    <label>Mobile Number: </label> <input name="mobile" type="text" id="mobile" required="true" minlength="10" maxlength="10" >
+                </div>
+                <div id="form-inputs">
+                    <label>E-Mail: </label> <input name="email" type="email" id="email" required="true">
+                </div>
+                <div id="form-inputs">
+                    <label>Sex: </label>
+                    <select name="sex" id="sex">
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                        <option value="N">Rather not Specify</option>
+                    </select>
+                </div>
+                <input id="submit-button" type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 {% endblock %}
