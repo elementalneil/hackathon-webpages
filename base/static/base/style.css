@@ -189,3 +189,24 @@ nav a:hover{
     padding: 2% 0%;
     width: 25%;
 }
+
+/*Footer Elements*/
+.spacing200{
+    margin: 100px 0;
+}
+
+#mainFooter{
+    background: #390011;
+    color: #FEFFFF;
+    padding-left: 15%;
+    padding-top: 2.5%;
+    padding-bottom: 5%;
+}
+
+#footBlock1{
+    width: 50%;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 1.6em;
+}
