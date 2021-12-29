@@ -32,9 +32,12 @@
     <div id="timer"></div>
 <hr>
 <div>
-    {% for p in participants %}
-        <div><h5>#{{p.id}}: {{p.name}}</h5></div>
-    {% endfor %}
+    <div>Registered Participants: </div>
+    <div>
+        {% for p in participants %}
+            <div><h5>#{{p.roll}}: {{p.name}}</h5></div>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
